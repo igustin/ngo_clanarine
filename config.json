@@ -1,0 +1,29 @@
+{
+  "uplatnica": {
+    "poziv_na_broj_platitelja": "",
+    "poziv_na_broj_primatelja": "",
+    "iznos": "",
+    "iban_primatelja": "HR1234567890123456789",
+    "iban_platitelja": "",
+    "model_primatelja": "HR00",
+    "model_platitelja": "",
+    "sifra_namjene": "OTLC",
+    "datum_izvrsenja": "",
+    "valuta_placanja": "EUR",
+    "hitno": "",
+    "ime_i_prezime_platitelja": "",
+    "ulica_i_broj_platitelja": "",
+    "postanski_i_grad_platitelja": "",
+    "naziv_primatelja": "Udruga",
+    "ulica_i_broj_primatelja": "Ulica 0",
+    "postanski_i_grad_primatelja": "99999 Grad",
+    "opis_placanja": ""
+  },
+  "email": {
+    "sender_email": "ime.prezime@example.com",
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "username": "ime.prezime@example.com",
+    "password": "GOOGLE-APP-PASSWORD"
+  }
+}
