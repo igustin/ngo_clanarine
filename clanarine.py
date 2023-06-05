@@ -9,7 +9,6 @@ import csv
 import sys
 
 # moduli za pripremu i slanje mailova
-import os
 import smtplib
 from email import encoders
 from email.mime.base import MIMEBase
