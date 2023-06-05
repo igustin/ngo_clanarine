@@ -144,6 +144,18 @@ smtp_connection = smtplib.SMTP(smtp_server, smtp_port)
 smtp_connection.starttls()
 smtp_connection.login(username, password)
 
+def load_email_template():
+    email_template = None
+    try:
+        with open('email.txt') as f:
+            email_template = f.read()
+            return email_template
+    except FileNotFoundError:
+        sys.stderr.write('Ne postoji email.txt predložak. Ne mogu nastaviti bez toga.\n')
+        sys.exit(1)
+
+
+email_template = load_email_template()
 
 """
 Petlja koja po svakom članu čitanje njegove podatke, generira uplatnicu,
@@ -191,27 +203,12 @@ for polaznik in uplate_polaznika:
     email_message['From'] = sender_email
     email_message['To'] = polaznik[6]
     email_message['Subject'] = "Članarina za " + mjesec
-    message = f"""
-    Poštovani,
-
-    šaljemo vam informacije za uplatu članarine za Udrugu za {mjesec}.
-
-    Članarinu možete platiti na neki od ova 3 načina:
-
-    1) netbankingom s ovim podacima za uplatu:
-    Primatelj: Udruga, Ulica, Grad
-    IBAN: HR12345678901234567890
-    Model plaćanja: HR00
-    Poziv na broj: {poziv_na_broj}
-    Opis plaćanja: {opis}
-    Iznos: {polaznik[mjesec_offset]}
-
-    2) foto-nalogom, skeniranjem 2D bar koda na uplatnici u prilogu;
-
-    3) ispisom uplatnice u prilogu i plaćanjem u banci, pošti, na kiosku ili blagajni nekih trgovina.
-
-    Hvala na sudjelovanju na radionicama! 🙂
-    """
+    message = email_template.format(
+        mjesec=mjesec,
+        poziv_na_broj=poziv_na_broj,
+        opis=opis,
+        iznos=polaznik[mjesec_offset]
+    )
 
     # pakiranje body + attachment
     email_message.attach(MIMEText(message, 'plain'))

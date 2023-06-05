@@ -50,7 +50,8 @@ trenutku se koristi Gmail). Postavke se nalaze u `config.json` datoteci pod klju
 * sender_email sadrži GMail adresu pošiljatelja
 * username je Google Account preko kojeg se šalju mailu, tipično je isto kao i GMail adresa pošiljatelja
 * password **NIJE password** GMail accounta, nego **Google Application Password** kojeg za aplikaciju treba korisnik izgenerirati unutar svog Google Accounta pod opcijom 2FA
-* tekst maila s individualiziranim podacima je definiran u redovima 211-231
+* tekst maila s individualiziranim podacima je definiran u datoteci
+  `email.txt`
 * kreirati poddirektorij "uplatnice" u koji će se spremati PDF uplatnice, pri čemu će filename bit oblika Uplatnica_ime_prezime_mjesec.pdf
 
 # Korištenje programa
