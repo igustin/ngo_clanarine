@@ -8,7 +8,7 @@ Program je napravljen za potrebe jedne udruge, s raznim specifičnostima koje su
 * ulazni podaci se pripremaju u GoogleSheet, LibreOffice Calc, Microsoft Excel ili sličnoj tablici prema formatu opisanim u nastavku, pri čemu pojedini članovi mogu imati različite iznose (ovisno o tipu članstva, broju sudjelovanju na radionicama i slično)
 * podaci se iz tablice ručno eksportiraju u CSV datoteku i koriste u programu
 * program se poziva uz navođenje mjeseca (ili razdoblja) i godine za koje se šalju uplatnice
-* program generira individualiziranu HUB-3 uplatnicu s 2D barkodom za plaćanje fotonalogom i trajno je sprema u poddirektorij, pri čemu se poziv na broj formira u obliku OIB-GGGGMM radi točne identifikacije uplate
+* program generira individualiziranu HUB-3 uplatnicu predlošku s 2D barkodom za plaćanje fotonalogom i trajno je sprema u poddirektorij, pri čemu se poziv na broj formira u obliku OIB-GGGGMM radi točne identifikacije uplate
 * program generira individualizirani mail s uputama za više načina plaćanja i PDF uplatnicom u attachmentu
 * automatski šalje mail preko GMaila
 
@@ -45,7 +45,7 @@ Prije prve upotrebe, program treba unutar izvornog koda jednokratno konfigurirat
   * "postanski_i_grad_primatelja": "99999 Grad"
 * sender_email (redak 153) sadrži GMail adresu pošiljatelja
 * username (redak 158) je Google Account preko kojeg se šalju mailu, tipično je isto kao i GMail adresa pošiljatelja
-* password (redak 159) **NIJE password** GMail accounta, nego **Google Application Password** kojeg za aplikaciju treba izgenerirati unutar svog Google Accounta pod opcijom 2FA
+* password (redak 159) **NIJE password** GMail accounta, nego **Google Application Password** kojeg za aplikaciju treba korisnik izgenerirati unutar svog Google Accounta pod opcijom 2FA
 * tekst maila s individualiziranim podacima je definiran u redovima 211-231
 * kreirati poddirektorij "uplatnice" u koji će se spremati PDF uplatnice, pri čemu će filename bit oblika Uplatnica_ime_prezime_mjesec.pdf
 
@@ -69,7 +69,7 @@ Programu treba nekoliko sekundi za kreiranje i slanje maila po svakom zapisu, pr
 
 ![image](https://github.com/igustin/ngo_clanarine/assets/1834262/0ec384fa-ee70-481b-9334-ebc241b2874c)
 
-PDF uplatnica imena npr. "Uplatnica_Tomislav_Matić_9-10_2022.pdf" sprema se u poddirektorij "uplatnice" i izgleda ovako:
+PDF uplatnica, kreirana prema PostScript predlošku uplatnica.tpl, s imenom npr. "Uplatnica_Tomislav_Matić_9-10_2022.pdf" sprema se u poddirektorij "uplatnice" i izgleda ovako:
 
 ![image](https://github.com/igustin/ngo_clanarine/assets/1834262/d6643821-7db8-4db4-917a-0d3e32e3dfa2)
 
