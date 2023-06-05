@@ -120,7 +120,7 @@ else:
 		mm_od, mm_do = mm.split("-")
 	else:
 		mm_od, mm_do = mm, mm
-	if int(mm_od) not in range(1,13) or int(mm_do) not in range(1,13) or int(mm_od) >= int(mm_do):
+	if int(mm_od) not in range(1,13) or int(mm_do) not in range(1,13) or int(mm_od) > int(mm_do):
 		print("Mjesec mora biti u formatu m/gggg ili m-m/gggg zbog poziva na broj!")
 		sys.exit()
 	print("Radim i šaljem uplatnice za " + mm + ". mjesec " + gggg + ". godine, evidentirano kao " + mm_od + "/" + gggg)
