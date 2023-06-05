@@ -65,11 +65,13 @@ def ucitaj_podatke(datafile):
         6: e-mail adresa roditelja/staratelja kojem se šalje mail s uplatnicom
         7 i dalje: iznos uplate za određeni mjesec
     """
+    result = []
     with open(datafile) as csv_file:
         csv_reader = csv.reader(csv_file)
         for row in csv_reader:
             if row[0] != '':
-                uplate_polaznika.append(row)
+                result.append(row)
+    return result
 
 
 """
@@ -130,8 +132,7 @@ else:
 Učitavanje podataka o članovima i iznosima.
 Detalji formata opisani u funkciji.
 """
-uplate_polaznika = []
-ucitaj_podatke("clanarine.csv")
+uplate_polaznika = ucitaj_podatke("clanarine.csv")
 """
 Offset za stupac u kojem je iznos računa
 """
