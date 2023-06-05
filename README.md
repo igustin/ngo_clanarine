@@ -36,16 +36,20 @@ H i dalje) - iznos uplate za određeni mjesec ili razdoblje u formatu m/gggg ili
 
 # Konfiguriranje programa
 
-Prije prve upotrebe, program treba unutar izvornog koda jednokratno konfigurirati s obzirom na podatke o udruzi i podacima o pošiljatelju:
+Prije prve upotrebe, program treba jednokratno konfigurirati s obzirom na podatke o udruzi i podacima o pošiljatelju. Datoteka za konfiguraciju se zove `config.json` i cita se iz trenutnog direktorija.
 
-* u retcima 79-98 treba upisati statične podatke primatelja (udruge), tipično je to:
+* Konfigurirati treba statične podatke primatelja (udruge), tipično je to:
   * "iban_primatelja": "HR1234567890123456789"
   * "naziv_primatelja": "Udruga"
   * "ulica_i_broj_primatelja": "Ulica 0"
   * "postanski_i_grad_primatelja": "99999 Grad"
-* sender_email (redak 153) sadrži GMail adresu pošiljatelja
-* username (redak 158) je Google Account preko kojeg se šalju mailu, tipično je isto kao i GMail adresa pošiljatelja
-* password (redak 159) **NIJE password** GMail accounta, nego **Google Application Password** kojeg za aplikaciju treba korisnik izgenerirati unutar svog Google Accounta pod opcijom 2FA
+
+Dodatno je potrebno konfigurirati postavke za slanje maila (u ovom
+trenutku se koristi Gmail). Postavke se nalaze u `config.json` datoteci pod ključem
+`"email"`.
+* sender_email sadrži GMail adresu pošiljatelja
+* username je Google Account preko kojeg se šalju mailu, tipično je isto kao i GMail adresa pošiljatelja
+* password **NIJE password** GMail accounta, nego **Google Application Password** kojeg za aplikaciju treba korisnik izgenerirati unutar svog Google Accounta pod opcijom 2FA
 * tekst maila s individualiziranim podacima je definiran u redovima 211-231
 * kreirati poddirektorij "uplatnice" u koji će se spremati PDF uplatnice, pri čemu će filename bit oblika Uplatnica_ime_prezime_mjesec.pdf
 

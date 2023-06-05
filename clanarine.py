@@ -75,32 +75,6 @@ def ucitaj_podatke(datafile):
 
 
 """
-Niz podataka potrebnih za ispunjavanje uplatnice. Nazivi polja su predefinirani.
-Dio podataka su fiksni i zajednicki za sve uplatnice, ostalo kasnije prema platitelju.
-"""
-podaci_uplatnice = """
-    {"poziv_na_broj_platitelja": "",
-     "poziv_na_broj_primatelja": "",
-     "iznos": "",
-     "iban_primatelja": "HR1234567890123456789",
-     "iban_platitelja": "",
-     "model_primatelja": "HR00",
-     "model_platitelja": "",
-     "sifra_namjene": "OTLC",
-     "datum_izvrsenja": "",
-     "valuta_placanja": "EUR",
-     "hitno": "",
-     "ime_i_prezime_platitelja": "",
-     "ulica_i_broj_platitelja": "",
-     "postanski_i_grad_platitelja": "",
-     "naziv_primatelja": "Udruga",
-     "ulica_i_broj_primatelja": "Ulica 0",
-     "postanski_i_grad_primatelja": "99999 Grad",
-     "opis_placanja": ""}
-"""
-
-
-"""
 Preuzimanje parametra za mjesec i godinu za koji se generiraju uplatnice i šalju mailovi.
 Zadaje se u formatu "m/gggg" ili "m-m/gggg" koji se dalje koristi za offset odgovarajućeg stupca za iznos,
 te oblikovanje opisa plaćanja na uplatnici, naziva datoteke uplatnice i oblikovanje maila.
@@ -148,16 +122,25 @@ if mjesec_offset == len(uplate_polaznika[0])-1 and mjesec != uplate_polaznika[0]
 Učitavanje niza predefiniranih podataka za ispunjavanje uplatnice
 Podaci primatelja su fiksni, podaci primatelja varijabilni
 """
-uplatnica = json.loads(podaci_uplatnice)
+def read_config():
+    cfg = {}
+    with open('config.json') as f:
+        cfg = json.loads(f.read())
+
+    return cfg
+
+cfg = read_config()
+uplatnica = cfg['uplatnica']
+print(uplatnica)
 
 # predefiniranje maila za slanje
-sender_email = 'ime.prezime@gmail.com'
+sender_email = cfg['email']['sender_email']
 
 # autorizacija i prijava na Gmail SMTP server
-smtp_server = 'smtp.gmail.com'
-smtp_port = 587
-username = 'ime.prezime@gmail.com'
-password = '******************'  # Google App password
+smtp_server = cfg['email']['smtp_server']
+smtp_port = cfg['email']['smtp_port']
+username = cfg['email']['username']
+password = cfg['email']['password']
 smtp_connection = smtplib.SMTP(smtp_server, smtp_port)
 smtp_connection.starttls()
 smtp_connection.login(username, password)
